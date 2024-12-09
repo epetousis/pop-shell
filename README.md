@@ -205,7 +205,7 @@ Please install the following as dependencies when developing:
 - Latest `npm` (comes with NodeJS)
 - `npm install typescript@latest`
 
-While working on the shell, you can recompile, reconfigure, reinstall, and restart GNOME Shell with logging with `make debug`. Note that this only works reliably in X11 sessions, since Wayland will exit to the login screen on restarting the shell.
+While working on the shell, you can recompile, reconfigure, reinstall, and restart GNOME Shell with logging with `make debug`. [If you are using Wayland](https://github.com/GNOME/gnome-shell/blob/main/docs/building-and-running.md#native) and require shortcuts to go to the nested debug shell, you will need to switch to a tty before running `make debug`.
 
 [Discussions welcome on Pop Chat](https://chat.pop-os.org/pop-os/channels/development)
 

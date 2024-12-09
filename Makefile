@@ -70,14 +70,21 @@ uninstall:
 restart-shell:
 	@echo "Restart shell!"
 ifneq ($(WAYLAND_DISPLAY),) # Don't restart if WAYLAND_DISPLAY is set
-	@echo "WAYLAND_DISPLAY is set, not restarting shell";
-else
+	@echo "WAYLAND_DISPLAY is set, creating nested shell. Shortcuts won't work!";
+
+	dbus-run-session -- gnome-shell --wayland --nested
+else ifneq ($(DISPLAY),) # Gracefully restart on X clients - this is the smoothest option
+	@echo "DISPLAY is set, attempting graceful restart.";
 	if bash -c 'xprop -root &> /dev/null'; then \
 		pkill -HUP gnome-shell; \
 	else \
 		gnome-session-quit --logout; \
 	fi
 	sleep 3
+else # No X or Wayland? Start up Gnome shell.
+	@echo "No displays set, starting up a temporary gnome-shell.";
+
+	dbus-run-session -- gnome-shell --wayland
 endif
 
 update-repository:
