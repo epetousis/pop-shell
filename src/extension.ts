@@ -2709,6 +2709,9 @@ export default class PopShellExtension extends Extension {
         if (ext.settings.tile_by_default()) {
             ext.auto_tile_on();
         }
+
+        // TODO: if (ext.settings.tiler_by_default())
+        ext.tiler.enter(ext);
     }
     disable() {
         log.info('disable');

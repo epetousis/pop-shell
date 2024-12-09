@@ -754,7 +754,7 @@ export class Tiler {
 
             // Set overlay to match window
             ext.set_overlay(win.rect());
-            ext.overlay.visible = true;
+            // ext.overlay.visible = true;
 
             if (!ext.auto_tiler || ext.contains_tag(win.entity, Tags.Floating)) {
                 // Make sure overlay is valid
